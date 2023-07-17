@@ -1,0 +1,17 @@
+{
+  "name": "phasereditor2d-v3-monaco-plugins",
+  "version": "1.0.0",
+  "description": "Code editors based on VSCode Monaco editors.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc -b -w .",
+    "build": "tsc -b",
+    "clean": "tsc -b -clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Phaser Editor 2D",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
