@@ -2,7 +2,11 @@ namespace phasereditor2d.code.ui {
 
     export class PreloadModelsExtension extends colibri.ui.ide.PreloadProjectResourcesExtension {
 
-        private static PHASER_DEFS = ["data/matter.d.ts", "data/phaser.d.ts", "data/phaser-fixes.d.ts"];
+        private static PHASER_DEFS = [
+            "data/matter.d.ts",
+            "data/phaser.d.ts",
+            "data/phaser-fixes.d.ts"
+        ];
 
         async computeTotal(): Promise<number> {
 
@@ -42,8 +46,8 @@ namespace phasereditor2d.code.ui {
 
             for (const path of PreloadModelsExtension.PHASER_DEFS) {
 
-                const content = await CodePlugin.getInstance().getString(path);
-
+                const content = await CodePlugin.getInstance().getString(path + ".txt");
+                
                 monaco.editor.createModel(content, "javascript", CodePlugin.fileUri(path));
 
                 monitor.step();
