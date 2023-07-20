@@ -28,25 +28,10 @@ namespace phasereditor2d.code {
         }
 
         constructor() {
-            super("phasereditor2d.code");
+            super("phasereditor2d.code", true);
         }
 
         registerExtensions(reg: colibri.ExtensionRegistry) {
-
-            // icons loader
-
-            reg.addExtension(
-                colibri.ui.ide.IconLoaderExtension.withPluginFiles(this, [
-                    ICON_SYMBOL_CLASS,
-                    ICON_SYMBOL_CONSTANT,
-                    ICON_SYMBOL_FIELD,
-                    ICON_SYMBOL_INTERFACE,
-                    ICON_SYMBOL_METHOD,
-                    ICON_SYMBOL_NAMESPACE,
-                    ICON_SYMBOL_PROPERTY,
-                    ICON_SYMBOL_VARIABLE
-                ])
-            );
 
             // editors
 
