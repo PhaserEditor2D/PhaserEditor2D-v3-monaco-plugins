@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../plugins/phasereditor2d.code/icons/atlas@1x.json</filename>
+                <filename>../../plugins/phasereditor2d.code/icons/atlas@x1.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
