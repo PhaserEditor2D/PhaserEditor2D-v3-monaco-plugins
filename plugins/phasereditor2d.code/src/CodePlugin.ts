@@ -28,7 +28,10 @@ namespace phasereditor2d.code {
         }
 
         constructor() {
-            super("phasereditor2d.code", { loadIconsFromAtlas: true });
+            super("phasereditor2d.code", {
+                loadIconsFromAtlas: true,
+                loadResources: true
+            });
         }
 
         registerExtensions(reg: colibri.ExtensionRegistry) {

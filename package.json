@@ -12,6 +12,7 @@
   "author": "Phaser Editor 2D",
   "license": "MIT",
   "devDependencies": {
+    "colibri-packer": "file:../colibri-packer",
     "typescript": "^5.1.6"
   }
 }
