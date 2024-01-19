@@ -36,6 +36,9 @@
         },
         {
             "path": "../../../../PhaserEditor2D-v3/source/editor/plugins/phasereditor2d.phaser/src"
+        },
+        {
+            "path": "../../../../PhaserEditor2D-v3/source/editor/plugins/phasereditor2d.spine/src"
         }
     ],
     "exclude": [

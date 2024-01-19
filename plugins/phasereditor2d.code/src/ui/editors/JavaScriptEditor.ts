@@ -163,7 +163,7 @@ namespace phasereditor2d.code.ui.editors {
             // remove the ' or " or ` chars
             str = str.substring(1, str.length - 1);
 
-            const obj = this._finder.findPackItemOrFrameWithKey(str);
+            const obj = this._finder.findAssetPackItem(str);
 
             return obj;
         }
