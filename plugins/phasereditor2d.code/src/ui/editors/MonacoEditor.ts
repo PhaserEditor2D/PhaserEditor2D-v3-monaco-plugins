@@ -77,16 +77,18 @@ namespace phasereditor2d.code.ui.editors {
 
         protected createPart(): void {
 
+            console.log("Creating Monaco editor.");
+
             const container = document.createElement("div");
             container.classList.add("MonacoEditorContainer");
 
             this._editor = monaco.editor.create(container, {
                 scrollBeyondLastLine: true,
-                fontSize: 16
+                fontSize: 16,
             });
 
             // tslint:disable-next-line:no-bitwise
-            this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_P, () => {
+            this._editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyP, () => {
 
                 const manager = colibri.Platform.getWorkbench().getCommandManager();
                 manager.executeCommand(files.ui.actions.CMD_GO_TO_FILE);

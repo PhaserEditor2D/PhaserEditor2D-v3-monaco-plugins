@@ -37,7 +37,6 @@ namespace phasereditor2d.code.ui.editors {
 
             let model: monaco.editor.ITextModel;
 
-
             const content = await colibri.ui.ide.FileUtils.preloadAndGetFileString(file);
 
             const uri = CodePlugin.fileUri(file.getFullName());
@@ -208,9 +207,13 @@ namespace phasereditor2d.code.ui.editors {
             if (model) {
 
                 const worker = await CodePlugin.getInstance().getJavaScriptWorker();
-                const items = await worker.getNavigationBarItems(model.uri.toString());
 
-                return items.filter(i => i.text !== "<global>");
+                const navTree = await worker.getNavigationTree(model.uri.toString());
+
+                if (navTree && navTree.childItems) {
+
+                    return navTree.childItems;
+                }
             }
 
             return [];

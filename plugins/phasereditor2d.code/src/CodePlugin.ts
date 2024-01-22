@@ -55,10 +55,6 @@ namespace phasereditor2d.code {
 
             colibri.Platform.getWorkbench().getEditorRegistry().registerDefaultFactory(ui.editors.TextEditor.getFactory());
 
-            // extra libs loader
-
-            monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
-
             // reg.addExtension(new ui.PreloadExtraLibsExtension());
             reg.addExtension(new ui.PreloadModelsExtension());
             reg.addExtension(new ui.PreloadJavaScriptWorkerExtension());
@@ -94,6 +90,18 @@ namespace phasereditor2d.code {
         }
 
         async starting() {
+
+            const require = window["require"];
+
+            await new Promise((resolve, reject) => {
+
+                require(['vs/editor/editor.main'], function () {
+
+                    console.log("Monaco module loaded.");
+
+                    resolve(null);
+                });
+            });
 
             this._modelManager = new ui.ModelManager();
 
@@ -142,23 +150,25 @@ namespace phasereditor2d.code {
 
         private customizeMonaco() {
 
+            monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true);
+
             const opts = monaco.languages.typescript.javascriptDefaults.getCompilerOptions();
 
             opts.target = monaco.languages.typescript.ScriptTarget.ESNext;
             opts.module = monaco.languages.typescript.ModuleKind.ESNext;
 
-            this.customizeCodeServiceImpl();
+            this.customizeCodeEditorService();
         }
 
-        private customizeCodeServiceImpl() {
+        private customizeCodeEditorService() {
 
             const require = window["require"];
 
-            const module = require("vs/editor/standalone/browser/standaloneCodeServiceImpl");
+            const module = require("vs/editor/browser/services/abstractCodeEditorService");
 
-            const StandaloneCodeEditorServiceImpl = module.StandaloneCodeEditorServiceImpl;
+            const AbstractCodeEditorService = module.AbstractCodeEditorService;
 
-            StandaloneCodeEditorServiceImpl.prototype.openCodeEditor =
+            AbstractCodeEditorService.prototype.openCodeEditor =
                 (input: any, editor: monaco.editor.IStandaloneCodeEditor, sideBySide: boolean) => {
 
                     const uri = input.resource as monaco.Uri;

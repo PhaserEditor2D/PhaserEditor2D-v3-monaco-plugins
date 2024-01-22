@@ -1,0 +1,1 @@
+require.config({ paths: { vs: "/editor/app/plugins/phasereditor2d.code/scripts/monaco-editor-0.45.0/min/vs" } });
