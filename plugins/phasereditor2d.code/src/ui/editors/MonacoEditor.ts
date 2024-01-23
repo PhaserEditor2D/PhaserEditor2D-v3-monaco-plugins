@@ -283,7 +283,7 @@ namespace phasereditor2d.code.ui.editors {
                     break;
             }
 
-            return null;
+            return super.getEditorViewerProvider(key);
         }
 
         async refreshOutline() {
