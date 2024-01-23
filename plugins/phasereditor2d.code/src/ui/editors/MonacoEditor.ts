@@ -16,6 +16,7 @@ namespace phasereditor2d.code.ui.editors {
         private _modelLines: number;
         private _onDidChangeContentEvent: monaco.IDisposable;
         private _onDidChangeCountEvent: monaco.IDisposable;
+        private _monacoEditorContainer: HTMLDivElement;
 
         constructor(id: string, language: string, editorFactory: colibri.ui.ide.EditorFactory) {
             super(id, editorFactory);
@@ -82,6 +83,8 @@ namespace phasereditor2d.code.ui.editors {
             const container = document.createElement("div");
             container.classList.add("MonacoEditorContainer");
 
+            this._monacoEditorContainer = container;
+
             this._editor = monaco.editor.create(container, {
                 scrollBeyondLastLine: true,
                 fontSize: 16,
@@ -97,6 +100,11 @@ namespace phasereditor2d.code.ui.editors {
             this.getElement().appendChild(container);
 
             this.updateContent();
+        }
+
+        getMonacoEditorContainer() {
+
+            return this._monacoEditorContainer;
         }
 
         protected getTokenAt(pos: monaco.IPosition): IToken {
