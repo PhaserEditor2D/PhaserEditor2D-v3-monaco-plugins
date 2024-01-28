@@ -146,6 +146,16 @@ namespace phasereditor2d.code {
             });
 
             this.customizeMonaco();
+
+            console.log("Monaco configured.");
+
+            const extensions = colibri.Platform
+                .getExtensions<MonacoConfigExtension>(MonacoConfigExtension.POINT_ID);
+
+            for (const ext of extensions) {
+
+                ext.configureMonaco(require);
+            }
         }
 
         private customizeMonaco() {
